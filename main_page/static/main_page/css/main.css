@@ -1,0 +1,21 @@
+h1 {
+    color: forestgreen;
+    text-align: center;
+}
+p {
+    text-align: center;
+    font-size: 24px;
+}
+
+a:active,a:hover,a {
+    text-decoration: none;
+    background-color: gold;
+    color: -webkit-text;
+    text-align: center;
+    font-size: 35px;
+    border-style: outset;
+}
+div {
+    padding-top: 100px;
+    text-align: center;
+}
