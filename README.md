@@ -12,3 +12,4 @@
 * подтяните зависимости (python -m pip install -r requirements.txt)
 * чтобы запустить cервер введите (python manage.py runserver)
 * чтобы его убить назмите ctrl+C
+## файлы пользователей находятся в папке svg_editor/media/svg_editor/svg
