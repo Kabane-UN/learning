@@ -11,9 +11,9 @@ def index(request):
 
 
 def files_views(request):
-    path = os.path.join(BASE_DIR, 'svg_editor/media/svg_editor/txt')
-    txt_list = os.listdir(path)
+    path = os.path.join(BASE_DIR, 'svg_editor/media/svg_editor/svg')
+    svgs_lists = os.listdir(path)
     response = {
-        'txts': txt_list
+        'svgs': svgs_lists
     }
     return JsonResponse(response)

@@ -24,9 +24,9 @@
                   url: "{% url 'files_views' %}",
                   // если успешно, то
                   success: function (response) {
-                      console.log(response.txts)
+                      console.log(response.svgs)
                       ps = document.getElementById('ps')
-                      ps.innerHTML = response.txts
+                      ps.innerHTML = response.svgs
                   },
                   // если ошибка, то
                   error: function (response) {
