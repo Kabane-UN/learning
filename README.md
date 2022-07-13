@@ -15,3 +15,4 @@
 ### файлы пользователей находятся в папке: svg_editor/media/svg_editor/svg
 ### html -> : /svg_editor/templates/svg_editor/
 ### css+js -> : /svg_editor/static/svg_editor/css(js)
+
