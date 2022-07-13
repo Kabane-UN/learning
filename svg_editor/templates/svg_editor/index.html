@@ -4,10 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <title>SVG-Editor</title>
+<!--    загружать статику нужно именно так-->
     <link rel="stylesheet" href="{% static 'svg_editor/css/main.css' %}? 202207111841">
     <script src="{% static 'svg_editor/js/main.js' %}? 202207111841"></script>
 </head>
 <body>
-<h1> Графический редактор</h1>
+
+<p id="ps"></p>
+<button id="target">Кнопка с текстом</button>
+{% block javascript %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script>
+      $(document).ready(function () {
+          $('#target').click (function () {
+              // создаем AJAX-вызов
+              $.ajax({// получаяем данные формы
+                  // тут используется шаблонизатор
+                  url: "{% url 'files_views' %}",
+                  // если успешно, то
+                  success: function (response) {
+                      console.log(response.txts)
+                      ps = document.getElementById('ps')
+                      ps.innerHTML = response.txts
+                  },
+                  // если ошибка, то
+                  error: function (response) {
+                      // предупредим об ошибке
+                      console.log(response.responseJSON.errors)
+                  }
+              });
+              return false;
+          });
+      })
+  </script>
+{% endblock javascript %}
+
 </body>
 </html>
