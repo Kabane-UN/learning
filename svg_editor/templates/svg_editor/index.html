@@ -9,28 +9,33 @@
     <script src="{% static 'svg_editor/js/main.js' %}? 202207111841"></script>
 </head>
 <body>
-
-<p id="ps"></p>
-<button id="target">Кнопка с текстом</button>
+<div class="container mt-5 w-50">
+  <form id="contactForm" method="POST">
+      {% csrf_token %}
+    <p><input name="svg" required type="text">
+    <input type="submit" name="contact-submit" />
+  </form>
+</div>
 {% block javascript %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <script>
       $(document).ready(function () {
-          $('#target').click (function () {
+          // отслеживаем событие отправки формы
+          $('#contactForm').submit(function () {
               // создаем AJAX-вызов
-              $.ajax({// получаяем данные формы
-                  // тут используется шаблонизатор
-                  url: "{% url 'files_views' %}",
+              $.ajax({
+                  data: $(this).serialize(), // получаем данные формы
+                  type: $(this).attr('method'), // GET или POST
+                  url: "{% url 'files_save' %}",
                   // если успешно, то
                   success: function (response) {
-                      console.log(response.txts)
-                      ps = document.getElementById('ps')
-                      ps.innerHTML = response.txts
+                      alert("Спасибо");
                   },
                   // если ошибка, то
                   error: function (response) {
                       // предупредим об ошибке
+                      alert(response.responseJSON.errors);
                       console.log(response.responseJSON.errors)
                   }
               });
